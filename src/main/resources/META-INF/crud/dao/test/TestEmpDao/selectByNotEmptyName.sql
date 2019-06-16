@@ -1,0 +1,1 @@
+select * from employee where /*%if @isNotEmpty(name) */ employee_name = /* name */'hoge' /*%end*/

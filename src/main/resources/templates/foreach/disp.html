@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>ForEach</title>
+<style type="text/css">
+table {
+	border-collapse: collapse;
+	border: 1px solid #000000;
+}
+
+td {
+	border: solid 1px #c00;
+	text-indent: 5px;
+}
+</style>
+</head>
+<body>
+	<h2 th:text="|ユーザーID${EMP.employeeId}番さんの情報確認|">ユーザー表示画面</h2>
+	<table>
+		<tr>
+			<td style="width: 150px;"><b>ID</b></td>
+			<td style="width: 250px;" th:text="${EMP.employeeId}">1000</td>
+		</tr>
+		<tr>
+			<td><b>名前</b></td>
+			<td th:text="${EMP.employeeName}">山田太郎</td>
+		</tr>
+		<tr>
+			<td><b>年齢</b></td>
+			<td th:text="${EMP.age}">23</td>
+		</tr>
+		<tr>
+			<td><b>給料</b></td>
+			<td th:text="${EMP.salary}">23</td>
+		</tr>
+		<tr>
+			<td><b>職種</b></td>
+			<td><span th:text="${EMP.jobtypeId}"></span>&nbsp;:&nbsp;<span th:text="${EMP.jobtypeName}"></span></td>
+		</tr>
+		<tr>
+			<td><b>雇用日</b></td>
+			<td th:text="${EMP.hiredate}">23</td>
+		</tr>
+		<tr>
+			<td><b>部門</b></td>
+			<td><span th:text="${EMP.departmentId}"></span>&nbsp;:&nbsp;<span th:text="${EMP.departmentName}"></span></td>
+		</tr>
+		<tr>
+			<td><b>バージョン番号</b></td>
+			<td th:text="${EMP.version}">23</td>
+		</tr>
+		<tr>
+			<td><b>作成日</b></td>
+			<td th:text="${EMP.insertTimestamp}">23</td>
+		</tr>
+		<tr>
+			<td><b>更新日</b></td>
+			<td th:text="${EMP.updateTimestamp}">23</td>
+		</tr>
+	</table>
+	<a th:href="@{/foreach}">
+		<button type="button" value="戻る">戻る</button>
+	</a>
+</body>
+</html>

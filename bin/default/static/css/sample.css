@@ -1,0 +1,23 @@
+.fieldError {
+	border: 1px solid #ff0000;
+	background-color: #f7c6c4;
+}
+
+.errorMessage {
+    color: #ff0000;
+}
+a.Button {
+  padding: .3ex;
+  color: #fff;
+  background-color: #005e21;
+  text-decoration: none;
+  font-family: helvetica, tahoma, arial, verdana, sans-serif;
+  font-size: 1.5ex;
+}
+.title{
+	text-align: center;
+	background-color: #98fb98;
+}
+.odd{
+	background-color: #ffd700;
+}

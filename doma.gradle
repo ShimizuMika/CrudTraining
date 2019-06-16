@@ -1,0 +1,58 @@
+configurations {
+    domaGenRuntime
+}
+
+task copyDomaResources(type: Sync)  {
+    from sourceSets.main.resources.srcDirs
+    into compileJava.destinationDir
+    include 'doma.compile.config'
+    include 'META-INF/**/*.sql'
+    include 'META-INF/**/*.script'
+}
+
+compileJava {
+    dependsOn copyDomaResources
+    options.encoding = 'UTF-8'
+}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
+    options.compilerArgs = ['-proc:none']
+}
+
+dependencies {
+  // Doma Dependencies
+ 	annotationProcessor "org.seasar.doma:doma:${domaVersion}"
+	implementation "org.seasar.doma:doma:${domaVersion}"
+	domaGenRuntime "org.seasar.doma:doma-gen:${domaVersion}"
+	domaGenRuntime "mysql:mysql-connector-java:${mysqlVersion}"
+}
+
+task gen {
+    group = 'doma-gen'
+    doLast {
+        ant.taskdef(resource: 'domagentask.properties',
+            classpath: configurations.domaGenRuntime.asPath)
+        ant.gen(url: project.properties["domaUrl"], user: project.properties["domaUser"], password: project.properties["domaPassword"], templatePrimaryDir: 'src/main/resources/doma-gen-template', ignoredTableNamePattern: "sys_config", driverClassName: "com.mysql.cj.jdbc.Driver") { // 'sys_config' table must be ignored on MySQL 5.7 or above
+            entityConfig(packageName: project.properties["packageRootName"] + ".entity")
+            daoConfig(packageName:  project.properties["packageRootName"] + ".dao", overwrite: false)
+            sqlConfig()
+        }
+    }
+}
+
+task genTestCases {
+    group = 'doma-gen'
+    doLast {
+        ant.taskdef(resource: 'domagentask.properties',
+            classpath: configurations.domaGenRuntime.asPath)
+        ant.gen(url: project.properties["domaUrl"], user: project.properties["domaUser"], password: project.properties["domaPassword"]) {
+            sqlTestCaseConfig {
+                fileset(dir: 'src/main/resources') {
+                    include(name: 'META-INF/**/*.sql')
+                }
+            }
+        }
+    }
+
+}

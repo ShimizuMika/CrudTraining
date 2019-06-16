@@ -1,0 +1,1 @@
+select * from employee where employee_name like /* @prefix(prefix) */'X%' escape '$'

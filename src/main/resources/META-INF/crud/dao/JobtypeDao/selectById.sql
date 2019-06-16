@@ -1,0 +1,1 @@
+select * from joytype where joytypeId=/* id */1;

@@ -1,0 +1,42 @@
+plugins {
+	id 'org.springframework.boot' version '2.1.4.RELEASE'
+	id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'crud'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+	packageRootName="jp.co.isid.advtraining"
+	springVersion="2.1.4.RELEASE"
+	domaVersion="2.19.2"
+	mysqlVersion="8.0.15"
+}
+
+dependencies {
+	// Spring Dependencies
+	implementation "org.springframework.boot:spring-boot-starter-jdbc:${springVersion}"
+	implementation "org.springframework.boot:spring-boot-starter-thymeleaf:${springVersion}"
+	implementation "org.springframework.boot:spring-boot-starter-web:${springVersion}"
+	implementation "org.springframework.boot:spring-boot-devtools:${springVersion}"
+	implementation "mysql:mysql-connector-java:${mysqlVersion}"
+	testImplementation "org.springframework.boot:spring-boot-starter-test:${springVersion}"
+}
+
+
+def aptGeneratePath = 'build/apt_generated'
+compileJava.options.compilerArgs = ['-s', aptGeneratePath]
+new File(aptGeneratePath).mkdirs()
+
+
+apply from: "doma.gradle"
+apply from: "eclipse.gradle"
+
+

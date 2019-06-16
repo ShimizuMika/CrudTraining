@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>ForEach</title>
+<link rel="stylesheet" type="text/css" href="../static/css/sample.css"
+	th:href="@{/css/sample.css}" />
+</head>
+<body>
+	<h2>ユーザー一覧</h2>
+	<h3 th:if="${msg!=null}" th:text="${msg}"></h3>
+	<table>
+		<tr class="title">
+			<td style="width: 50px;"><b>ID</b></td>
+			<td style="width: 150px;"><b>名前</b></td>
+			<td style="width: 80px;"><b>年齢</b></td>
+			<td style="width: 150px;"><b>職種</b></td>
+			<td style="width: 150px;"><b>部門名</b></td>
+			<td style="width: 100px;"><b>詳細表示</b></td>
+			<td style="width: 100px;"><b>編集</b></td>
+			<td style="width: 100px;"><b>削除</b></td>
+		</tr>
+		
+		<tr th:each="emp,status : ${EMPLIST}" th:class="${status.odd}? 'odd'">
+			<td th:text="${emp.employeeId}">1000</td>
+			<td th:text="${emp.employeeName}">山田太郎</td>
+			<td th:text="${emp.age}">23</td>
+			<td th:text="${emp.jobtypeName}">SALESWOMAN</td>
+			<td th:text="${emp.departmentName}">SOUMU</td>
+			<td><a th:href="@{|/foreach/disp/${emp.employeeId}|}"
+				th:text="'ID='+${emp.employeeId}+'詳細'">詳細表示</a></td>
+			<td><a th:href="@{|/foreach/edit/${emp.employeeId}|}"
+				th:text="|ID=${emp.employeeId}編集|">編集</a></td>
+		<!-- 	<td><a th:href="@{/foreach/edit/__${emp.employeeId}__}"
+				th:text="|ID=${emp.employeeId}編集|">編集</a></td> -->
+			<td><a th:href="@{|/foreach/delete/${emp.employeeId}|}" th:text="|ID=${emp.employeeId}削除|">削除</a></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td colspan="2"><a th:href="@{/foreach/newdata}">
+					<button type="button" value="新規作成">新規作成</button>
+			</a></td>
+			<td colspan="3"></td>
+		</tr>
+	</table>
+</body>
+</html>

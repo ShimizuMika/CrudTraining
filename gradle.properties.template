@@ -1,0 +1,9 @@
+#gradle properties
+#domaUrl=xxxxx
+#domaUser=xxxxx
+#domaPassword=xxxxx
+#org.gradle.java.home=xxxxx
+#systemProp.http.proxyHost=proxy.isid.co.jp
+#systemProp.http.proxyPort=8080
+#systemProp.https.proxyHost=proxy.isid.co.jp
+#systemProp.https.proxyPort=8080

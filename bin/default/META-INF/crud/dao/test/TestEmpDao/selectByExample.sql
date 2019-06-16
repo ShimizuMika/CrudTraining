@@ -1,0 +1,1 @@
+select * from employee where EMPLOYEE_NAME = /* e.employeeName */'aaa'

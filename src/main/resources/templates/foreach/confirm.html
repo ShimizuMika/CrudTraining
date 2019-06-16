@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>ForEach</title>
+<style type="text/css">
+table {
+	border-collapse: collapse;
+}
+
+td {
+	border: solid 1px #c71585;
+	text-indent: 5px;
+}
+</style>
+</head>
+<body>
+	<h2>ユーザー登録確認画面</h2>
+	<table th:object="${forEachForm}">
+		<tr>
+			<td style="width: 100px"><b>名前</b></td>
+			<td style="width: 200px" th:text="*{employeeName}">山田太郎</td>
+		</tr>
+		<tr>
+			<td><b>年齢</b></td>
+			<td th:text="*{age}">23</td>
+		</tr>
+		<tr>
+			<td><b>給料</b></td>
+			<td th:text="*{salary}">23</td>
+		</tr>
+		<tr>
+			<td><b>職種</b></td>
+			<td><span th:text="*{jobtypeId}"></span></td>
+		</tr>
+		<tr>
+			<td><b>雇用日</b></td>
+			<td th:text="*{hiredate}">23</td>
+		</tr>
+		<tr>
+			<td><b>部門</b></td>
+			<td><span th:text="*{departmentId}"></span></td>
+		</tr>
+	</table>
+	<form th:action="@{/foreach/save}" th:object="${forEachForm}"
+		method="post">
+		<input type="hidden" th:field="*{employeeName}"
+			th:value="*{employeeName}" /> <input type="hidden" th:field="*{age}"
+			th:value="*{age}" /> <input type="hidden" th:field="*{salary}"
+			th:value="*{salary}" /> <input type="hidden" th:field="*{jobtypeId}"
+			th:value="*{jobtypeId}" /> <input type="hidden"
+			th:field="*{hiredate}" th:value="*{hiredate}" /> <input
+			type="hidden" th:field="*{departmentId}" th:value="*{departmentId}" />
+		<input type="submit" name="btnName" value="登録" /> <input
+			type="submit" name="btnName" value="戻る" />
+	</form>
+
+</body>
+</html>
