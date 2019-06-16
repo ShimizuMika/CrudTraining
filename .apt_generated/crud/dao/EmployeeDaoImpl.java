@@ -2,7 +2,7 @@ package crud.dao;
 
 /** */
 @org.springframework.stereotype.Component()
-@javax.annotation.Generated(value = { "Doma", "2.19.2" }, date = "2019-06-17T00:30:41.315+0900")
+@javax.annotation.Generated(value = { "Doma", "2.19.2" }, date = "2019-06-17T00:33:20.632+0900")
 public class EmployeeDaoImpl extends org.seasar.doma.internal.jdbc.dao.AbstractDao implements crud.dao.EmployeeDao {
 
     static {

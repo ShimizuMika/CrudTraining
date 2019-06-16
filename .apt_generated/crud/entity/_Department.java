@@ -1,7 +1,7 @@
 package crud.entity;
 
 /** */
-@javax.annotation.Generated(value = { "Doma", "2.19.2" }, date = "2019-06-17T00:30:40.870+0900")
+@javax.annotation.Generated(value = { "Doma", "2.19.2" }, date = "2019-06-17T00:33:20.443+0900")
 public final class _Department extends org.seasar.doma.jdbc.entity.AbstractEntityType<crud.entity.Department> {
 
     static {
